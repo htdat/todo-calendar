@@ -3,7 +3,7 @@ import { SingleDatePicker } from 'react-google-flight-datepicker';
 import 'react-google-flight-datepicker/dist/main.css';
 
 // redux
-import store from './reducers';
+import store from './store';
 import { Provider } from 'react-redux';
 
 function App() {
