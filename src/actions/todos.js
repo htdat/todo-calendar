@@ -19,8 +19,8 @@ export const addTodo = (date, title) => async (dispatch) => {
 
     dispatch(addAlert(`Todo "${data.title}" added!`, 'green'));
   } catch (error) {
-    // @todo - hanlde the alert
-    console.log(error);
+    dispatch(addAlert(`Can not add "${title}". Network error!`, 'red'));
+    console.error(error);
   }
 };
 
