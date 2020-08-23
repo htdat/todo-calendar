@@ -5,8 +5,11 @@ const api = async (method = 'GET', uri = '', data = {}) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
   };
+
+  if (method !== 'GET' && method !== 'HEAD') {
+    args.body = JSON.stringify(data);
+  }
   return fetch(baseUrl + uri, args).then((res) => res.json());
 };
 

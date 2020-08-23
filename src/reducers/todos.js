@@ -1,4 +1,4 @@
-import { ADD_TODO, UPDATE_DATE } from '../actions/types';
+import { ADD_TODO, UPDATE_DATE, GET_TODO } from '../actions/types';
 import moment from 'moment';
 
 const initialState = {
@@ -19,7 +19,11 @@ const todos = (state = initialState, action) => {
         ...state,
         date: payload,
       };
-
+    case GET_TODO:
+      return {
+        ...state,
+        list: payload,
+      };
     default:
       return state;
   }
