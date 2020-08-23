@@ -1,20 +1,28 @@
-import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actions/types';
+import { ADD_TODO, UPDATE_DATE } from '../actions/types';
+import moment from 'moment';
 
-const todos = (state = {}, action) => {
-  switch (action.type) {
+const initialState = {
+  list: [],
+  date: moment().format('YYYY-MM-DD'),
+};
+
+const todos = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
     case ADD_TODO:
       // do something
-      break;
-    case REMOVE_TODO:
-      // do something
-      break;
-    case TOGGLE_TODO:
-      // do something
-      break;
+      return {
+        ...state,
+        list: [...state.list, payload],
+      };
+    case UPDATE_DATE:
+      return {
+        ...state,
+        date: payload,
+      };
 
     default:
       return state;
-      break;
   }
 };
 

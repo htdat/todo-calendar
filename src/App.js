@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import { SingleDatePicker } from 'react-google-flight-datepicker';
-import 'react-google-flight-datepicker/dist/main.css';
+import React from 'react';
 
 // redux
 import store from './store';
 import { Provider } from 'react-redux';
 
-function App() {
-  const [date, setDate] = useState(new Date());
+// internal
 
-  const onChange = (newDate) => {
-    console.log();
-    setDate(newDate);
-  };
+import Form from './components/Form';
+import DatePicker from './components/DatePicker';
+function App() {
   return (
     <Provider store={store}>
-      <SingleDatePicker startDate={date} onChange={onChange} />
-      Selected Date: {date.toString()}
+      <DatePicker />
+      <hr />
+      <Form />
+      <hr />
+      Todolist
     </Provider>
   );
 }
