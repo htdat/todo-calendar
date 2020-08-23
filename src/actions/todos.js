@@ -1,5 +1,11 @@
 import api from '../helpers/api';
-import { ADD_TODO, UPDATE_DATE, GET_TODO, REMOVE_TODO } from './types';
+import {
+  ADD_TODO,
+  UPDATE_DATE,
+  GET_TODO,
+  REMOVE_TODO,
+  TOGGLE_TODO,
+} from './types';
 import { addAlert } from './alert';
 import store from '../store';
 
@@ -67,5 +73,25 @@ export const removeTodo = (id, title = null) => async (dispatch) => {
     dispatch(addAlert(alertMsg, 'red'));
   } catch (error) {
     dispatch(addAlert(`Can not delete the todo. ${error.toString()}`, 'red'));
+  }
+};
+
+export const toggleTodo = (id, currentBool) => async (dispatch) => {
+  try {
+    const data = await api('PATCH', `/${id}`, { isCompleted: !currentBool });
+
+    dispatch({
+      type: TOGGLE_TODO,
+      payload: data,
+    });
+
+    const alertMsg = data.isCompleted
+      ? `Todo "${data.title}" completed!`
+      : `Todo "${data.title}" undone!`;
+    dispatch(addAlert(alertMsg, 'green'));
+  } catch (error) {
+    dispatch(
+      addAlert(`Can not update todo ID ${id}. ${error.toString()}`, 'red')
+    );
   }
 };
