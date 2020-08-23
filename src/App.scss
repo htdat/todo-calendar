@@ -1,20 +1,88 @@
-/** Alert **/
+/* Variables */
+
+$dangerBackground: rgb(245, 57, 32);
+$succesBackground: rgb(15, 136, 15);
+
+/* Main Layout */
+#main-title {
+  text-align: center;
+}
+
+#main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  section {
+    width: 100%;
+    margin: 0px 5px;
+  }
+}
+
+@media screen and (min-width: 451px) {
+  #main-content {
+    flex-direction: row;
+  }
+}
+
+/* Alert */
 .alert-wrapper {
+  margin: 0px 0px 5px 0px;
+  .single-alert {
+    color: white;
+    padding: 10px;
+    margin: 2px 0px;
+    &.alert-danger {
+      background-color: $dangerBackground;
+    }
+    &.alert-success {
+      background-color: $succesBackground;
+    }
+  }
+}
+
+/* Todo Form */
+
+#todo-form {
   margin: 10px 0px;
+  form {
+    display: flex;
+    flex-direction: column;
+    button[type='submit'] {
+      border: none;
+      padding: 5px;
+      margin: 5px 0px;
+      color: white;
+      background-color: $succesBackground;
+      cursor: pointer;
+    }
+    input[type='text'] {
+      padding: 5px;
+      margin: 5px 0px;
+    }
+  }
 }
 
-.single-alert {
-  color: white;
-  padding: 10px;
-  margin: 1px 0px;
-  &.alert-danger {
-    background-color: red;
-  }
-  &.alert-success {
-    background-color: green;
+/* Todo list */
+
+#todo-list {
+  ul {
+    padding-inline-start: 10px;
   }
 }
-
-.single-todo.completed {
-  text-decoration: line-through;
+.single-todo {
+  list-style: none;
+  margin: 6px 0px;
+  &.completed {
+    text-decoration: line-through;
+  }
+  .delete {
+    color: white;
+    border: none;
+    padding: 2px 5px;
+    background-color: $dangerBackground;
+    cursor: pointer;
+  }
+  .title {
+    margin-left: 5px;
+  }
 }

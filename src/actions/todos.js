@@ -17,6 +17,10 @@ export const addTodo = (date, title) => async (dispatch) => {
       date,
     };
 
+    if (!title) {
+      return dispatch(addAlert('Title should not be empty!', 'danger'));
+    }
+
     const data = await api('POST', '', formData);
 
     dispatch({

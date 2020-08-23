@@ -20,13 +20,17 @@ function App() {
 
   return (
     <Provider store={store}>
+      <h1 id='main-title'>Todo Calendar</h1>
       <Alert />
-      <hr />
-      <DatePicker />
-      <hr />
-      <Form />
-      <hr />
-      <TodoList />
+      <div id='main-content'>
+        <section id='left'>
+          <DatePicker />
+          <Form />
+        </section>
+        <section id='right'>
+          <TodoList />
+        </section>
+      </div>
     </Provider>
   );
 }

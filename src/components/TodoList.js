@@ -15,14 +15,18 @@ const SingleTodoNoRedux = ({
   let className = 'single-todo';
   className += isCompleted ? ' completed' : '';
   return (
-    <li key={id} className={className} id={`single-todo-${id}`}>
+    <li key={id} className={className} id={`todo-${id}`}>
       <input
         type='checkbox'
         defaultChecked={isCompleted}
         onChange={() => toggleTodo(id, isCompleted)}
       />{' '}
-      <button onClick={() => removeTodo(id, title)}> x </button>{' '}
-      {isShowDate ? date : ''} {title}
+      <span className='delete' onClick={() => removeTodo(id, title)}>
+        x
+      </span>{' '}
+      <span className='title'>
+        {isShowDate ? date : ''} {title}
+      </span>
     </li>
   );
 };
@@ -43,17 +47,17 @@ export const SingleTodo = connect(null, { removeTodo, toggleTodo })(
 
 export const TodoList = ({ todos, removeTodo }) => {
   const numTodo = todos.length;
-  return (
-    numTodo > 0 && (
-      <div>
-        <h2>{numTodo === 1 ? '1 todo' : `${numTodo} todos`}</h2>
-        <ul>
-          {todos.map((todo) => (
-            <SingleTodo {...todo} key={todo.id} />
-          ))}
-        </ul>
-      </div>
-    )
+  return numTodo === 0 ? (
+    <h2>No todo for this day!</h2>
+  ) : (
+    <div id='todo-list'>
+      <h2>{numTodo === 1 ? '1 todo' : `${numTodo} todos`}</h2>
+      <ul>
+        {todos.map((todo) => (
+          <SingleTodo {...todo} key={todo.id} />
+        ))}
+      </ul>
+    </div>
   );
 };
 

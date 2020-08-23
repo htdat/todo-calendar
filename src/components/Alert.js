@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeAlert } from '../actions/alert';
 
-export const Alert = ({ alerts, removeAlert }) => {
+export const Alert = ({ alerts }) => {
   return (
     alerts.length > 0 && (
       <div className='alert-wrapper'>
@@ -11,7 +10,6 @@ export const Alert = ({ alerts, removeAlert }) => {
           return (
             <div key={id} className={'single-alert alert-' + alertType}>
               {text}
-              <button onClick={() => removeAlert(id)}>x</button>
             </div>
           );
         })}
@@ -22,15 +20,10 @@ export const Alert = ({ alerts, removeAlert }) => {
 
 Alert.propTypes = {
   alerts: PropTypes.array.isRequired,
-  removeAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   alerts: state.alert,
 });
 
-const mapDispatchToProps = {
-  removeAlert,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Alert);
+export default connect(mapStateToProps)(Alert);

@@ -7,23 +7,24 @@ const Form = ({ date, addTodo }) => {
   const [title, setTitle] = useState('');
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setTitle('');
-        addTodo(date, title);
-      }}
-    >
-      <input
-        name='title'
-        type='text'
-        value={title}
-        placeholder='What do you want to do?'
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <br />
-      <button type='submit'>Add todo</button>
-    </form>
+    <div id='todo-form'>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setTitle('');
+          addTodo(date, title);
+        }}
+      >
+        <input
+          name='title'
+          type='text'
+          value={title}
+          placeholder='What do you want to do?'
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <button type='submit'>Add todo</button>
+      </form>
+    </div>
   );
 };
 
