@@ -27,3 +27,7 @@ yarn run backend
 Frontend: http://localhost:3000
 
 Backend: http://localhost:3001/todos
+
+## Current result of this app
+
+![Screen Shot on 2020-08-24 at 00:02:39](https://user-images.githubusercontent.com/10045087/90984144-6ed06a00-e59d-11ea-9796-a8805ae58a0f.png)
