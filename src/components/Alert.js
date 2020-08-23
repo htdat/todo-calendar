@@ -6,7 +6,7 @@ import { removeAlert } from '../actions/alert';
 export const Alert = ({ alerts, removeAlert }) => {
   return (
     alerts.length > 0 && (
-      <div>
+      <div className='alert-wrapper'>
         {alerts.map(({ id, text, alertType }) => {
           return (
             <div key={id} className={'single-alert alert-' + alertType}>
