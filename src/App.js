@@ -5,6 +5,7 @@ import store from './store';
 import { Provider } from 'react-redux';
 
 // internal
+import './App.css';
 
 import Form from './components/Form';
 import DatePicker from './components/DatePicker';

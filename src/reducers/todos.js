@@ -1,4 +1,4 @@
-import { ADD_TODO, UPDATE_DATE, GET_TODO } from '../actions/types';
+import { ADD_TODO, UPDATE_DATE, GET_TODO, REMOVE_TODO } from '../actions/types';
 import moment from 'moment';
 
 const initialState = {
@@ -23,6 +23,11 @@ const todos = (state = initialState, action) => {
       return {
         ...state,
         list: payload,
+      };
+    case REMOVE_TODO:
+      return {
+        ...state,
+        list: state.list.filter((item) => item.id !== payload),
       };
     default:
       return state;

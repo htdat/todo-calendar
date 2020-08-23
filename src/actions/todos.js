@@ -1,5 +1,5 @@
 import api from '../helpers/api';
-import { ADD_TODO, UPDATE_DATE, GET_TODO } from './types';
+import { ADD_TODO, UPDATE_DATE, GET_TODO, REMOVE_TODO } from './types';
 import { addAlert } from './alert';
 import store from '../store';
 
@@ -48,5 +48,24 @@ export const getTodo = (date = null) => async (dispatch) => {
     dispatch(
       addAlert(`Can not fetch todos for "${date}". ${error.toString()}`, 'red')
     );
+  }
+};
+
+export const removeTodo = (id, title = null) => async (dispatch) => {
+  try {
+    await api('DELETE', `/${id}`);
+
+    dispatch({
+      type: REMOVE_TODO,
+      payload: id,
+    });
+
+    const alertMsg =
+      title === null
+        ? `Todo with "${id}" removed!`
+        : `Todo "${title}" removed!`;
+    dispatch(addAlert(alertMsg, 'red'));
+  } catch (error) {
+    dispatch(addAlert(`Can not delete the todo. ${error.toString()}`, 'red'));
   }
 };

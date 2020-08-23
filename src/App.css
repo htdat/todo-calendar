@@ -1,0 +1,11 @@
+.alert-red {
+  background-color: red;
+}
+
+.alert-green {
+  background-color: green;
+}
+
+.single-todo.completed {
+  text-decoration: line-through;
+}

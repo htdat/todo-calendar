@@ -1,33 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeTodo } from '../actions/todos';
 
-export const SingleTodo = ({
+const SingleTodoNoRedux = ({
   title,
   isCompleted,
   date,
   id,
   isShowDate = false,
+  removeTodo,
 }) => {
   let className = 'single-todo';
-  className += isCompleted ? ' commpleted' : '';
+  className += isCompleted ? ' completed' : '';
   return (
-    <li key={id} className={className}>
+    <li key={id} className={className} id={`single-todo-${id}`}>
       <input type='checkbox' defaultChecked={isCompleted} />{' '}
-      <button> x </button> {isShowDate ? date : ''} {title}
+      <button onClick={() => removeTodo(id, title)}> x </button>{' '}
+      {isShowDate ? date : ''} {title}
     </li>
   );
 };
 
-SingleTodo.propTypes = {
+SingleTodoNoRedux.propTypes = {
   title: PropTypes.string.isRequired,
   isCompleted: PropTypes.bool.isRequired,
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   isShowDate: PropTypes.bool,
+  removeTodo: PropTypes.func.isRequired,
 };
 
-export const TodoList = ({ todos }) => {
+export const SingleTodo = connect(null, { removeTodo })(SingleTodoNoRedux);
+
+export const TodoList = ({ todos, removeTodo }) => {
   const numTodo = todos.length;
   return (
     numTodo > 0 && (
@@ -51,6 +57,4 @@ const mapStateToProps = (state) => ({
   todos: state.todos.list,
 });
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps)(TodoList);
