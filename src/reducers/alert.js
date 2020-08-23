@@ -6,7 +6,7 @@ const initialState = [];
     {
         id: 'xxxxx',
         text: 'Alert message'
-        alertType: 'red' // or green 
+        alertType: 'danger' // or success 
 
     }
 ]

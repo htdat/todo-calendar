@@ -24,9 +24,9 @@ export const addTodo = (date, title) => async (dispatch) => {
       payload: data,
     });
 
-    dispatch(addAlert(`Todo "${data.title}" added!`, 'green'));
+    dispatch(addAlert(`Todo "${data.title}" added!`, 'success'));
   } catch (error) {
-    dispatch(addAlert(`Can not add "${title}". ${error.toString()}`, 'red'));
+    dispatch(addAlert(`Can not add "${title}". ${error.toString()}`, 'danger'));
   }
 };
 
@@ -52,7 +52,10 @@ export const getTodo = (date = null) => async (dispatch) => {
     });
   } catch (error) {
     dispatch(
-      addAlert(`Can not fetch todos for "${date}". ${error.toString()}`, 'red')
+      addAlert(
+        `Can not fetch todos for "${date}". ${error.toString()}`,
+        'danger'
+      )
     );
   }
 };
@@ -70,9 +73,11 @@ export const removeTodo = (id, title = null) => async (dispatch) => {
       title === null
         ? `Todo with "${id}" removed!`
         : `Todo "${title}" removed!`;
-    dispatch(addAlert(alertMsg, 'red'));
+    dispatch(addAlert(alertMsg, 'danger'));
   } catch (error) {
-    dispatch(addAlert(`Can not delete the todo. ${error.toString()}`, 'red'));
+    dispatch(
+      addAlert(`Can not delete the todo. ${error.toString()}`, 'danger')
+    );
   }
 };
 
@@ -88,10 +93,10 @@ export const toggleTodo = (id, currentBool) => async (dispatch) => {
     const alertMsg = data.isCompleted
       ? `Todo "${data.title}" completed!`
       : `Todo "${data.title}" undone!`;
-    dispatch(addAlert(alertMsg, 'green'));
+    dispatch(addAlert(alertMsg, 'success'));
   } catch (error) {
     dispatch(
-      addAlert(`Can not update todo ID ${id}. ${error.toString()}`, 'red')
+      addAlert(`Can not update todo ID ${id}. ${error.toString()}`, 'danger')
     );
   }
 };
