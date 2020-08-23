@@ -1,5 +1,6 @@
 import api from '../helpers/api';
 import { ADD_TODO, UPDATE_DATE } from './types';
+import { addAlert } from './alert';
 
 export const addTodo = (date, title) => async (dispatch) => {
   try {
@@ -15,6 +16,8 @@ export const addTodo = (date, title) => async (dispatch) => {
       type: ADD_TODO,
       payload: data,
     });
+
+    dispatch(addAlert(`Todo "${data.title}" added!`, 'green'));
   } catch (error) {
     // @todo - hanlde the alert
     console.log(error);

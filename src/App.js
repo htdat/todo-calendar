@@ -8,9 +8,13 @@ import { Provider } from 'react-redux';
 
 import Form from './components/Form';
 import DatePicker from './components/DatePicker';
+import Alert from './components/Alert';
+
 function App() {
   return (
     <Provider store={store}>
+      <Alert />
+      <hr />
       <DatePicker />
       <hr />
       <Form />
