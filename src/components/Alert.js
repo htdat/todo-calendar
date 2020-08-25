@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-export const Alert = ({ alerts }) => {
+const Alert = ({ alerts }) => {
   return (
     alerts.length > 0 && (
       <div className='alert-wrapper'>

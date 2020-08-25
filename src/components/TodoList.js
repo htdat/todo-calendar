@@ -25,7 +25,7 @@ const SingleTodoNoRedux = ({
         x
       </span>{' '}
       <span className='title'>
-        {isShowDate ? date : ''} {title}
+        {isShowDate && date} {title}
       </span>
     </li>
   );
@@ -45,7 +45,7 @@ export const SingleTodo = connect(null, { removeTodo, toggleTodo })(
   SingleTodoNoRedux
 );
 
-export const TodoList = ({ todos, removeTodo }) => {
+const TodoList = ({ todos, removeTodo }) => {
   const numTodo = todos.length;
   return numTodo === 0 ? (
     <h2>No todo for this day!</h2>

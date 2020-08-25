@@ -8,7 +8,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import { changeDate } from '../actions/todos';
 
-export const DatePicker = ({ date, changeDate }) => {
+const DatePicker = ({ date, changeDate }) => {
   return (
     <div id='date-picker'>
       <SingleDatePicker
